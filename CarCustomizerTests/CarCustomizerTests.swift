@@ -11,24 +11,40 @@ import XCTest
 
 class CarCustomizerTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testDisplayStatsReturnsMultilineStringWithValues() {
+        
+        let makes = ["Honda", "Tesla", "BMW", "Bentley"]
+        let models = ["Civic", "Model X", "i8", "Continental GT"]
+        let topSpeeds = [120, 180, 220, 155]
+        let accelerations = [8.3, 5.1, 5.7, 7.1]
+        let handlings = [4, 8, 7, 6]
+        
+        for i in 0..<4 {
+            let car  = Car(make: makes[i], model: models[i], topSpeed: topSpeeds[i], acceleration: accelerations[i], handling: handlings[i])
+            let carStats = car.displayStats()
+            let expectedStats = """
+            Make: \(makes[i])
+            Model: \(models[i])
+            Top Speed: \(topSpeeds[i]) mph
+            Acceleration (0-60): \(accelerations[i])s
+            Handling: \(handlings[i])
+            """
+            XCTAssertEqual(carStats, expectedStats)
         }
+        //arrange
+        let car = Car(make: "Mercedes Benz", model: "C-Class", topSpeed: 167, acceleration: 6.1, handling: 7)
+        let expectedStats = """
+        Make: Mercedes Benz
+        Model: C-Class
+        Top Speed: 167 mph
+        Acceleration (0-60): 6.1s
+        Handling: 7
+        """
+        //act
+        let carStats = car.displayStats()
+        //assert
+        XCTAssertEqual(carStats, expectedStats)
+        
     }
 
 }
