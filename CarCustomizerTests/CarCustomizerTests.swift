@@ -23,24 +23,24 @@ class CarCustomizerTests: XCTestCase {
             let car  = Car(make: makes[i], model: models[i], topSpeed: topSpeeds[i], acceleration: accelerations[i], handling: handlings[i])
             let carStats = car.displayStats()
             let expectedStats = """
-            Make: \(makes[i])
-            Model: \(models[i])
-            Top Speed: \(topSpeeds[i]) mph
-            Acceleration (0-60): \(accelerations[i])s
-            Handling: \(handlings[i])
+            Make: .................... \(makes[i])
+            Model: ................... \(models[i])
+            Top Speed: .............. \(topSpeeds[i]) mph
+            Acceleration (0-60): .. \(accelerations[i])s
+            Handling: ............... \(handlings[i])
             """
             XCTAssertEqual(carStats, expectedStats)
         }
         //arrange
         let car = Car(make: "Mercedes Benz", model: "C-Class", topSpeed: 167, acceleration: 6.1, handling: 7)
         let expectedStats = """
-        Make: Mercedes Benz
-        Model: C-Class
-        Top Speed: 167 mph
-        Acceleration (0-60): 6.1s
-        Handling: 7
+        Make: .................... Mercedes Benz
+        Model: ................... C-Class
+        Top Speed: .............. 167 mph
+        Acceleration (0-60): .. 6.1s
+        Handling: ............... 7
         """
-        //act
+
         let carStats = car.displayStats()
         //assert
         XCTAssertEqual(carStats, expectedStats)
