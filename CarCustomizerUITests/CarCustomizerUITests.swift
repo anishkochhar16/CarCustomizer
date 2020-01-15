@@ -26,9 +26,49 @@ class CarCustomizerUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testWhenBoughtECUAndNitroPackagesOtherButtonsDisable() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        app.launch()
+        
+        //act
+        app.switches["ECUSwitch"].tap()
+        app.switches["NitroSwitch"].tap()
+        
+        //assert
+        XCTAssertEqual(app.switches["TiresSwitch"].isEnabled, false)
+        XCTAssertEqual(app.switches["ExhaustSwitch"].isEnabled, false)
     }
+    
+    func testThatECUSwitchReenablesWhenItBecomesAffordable() {
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        //act
+        app.switches["NitroSwitch"].tap()
+        app.switches["TiresSwitch"].tap()
+        app.switches["ExhaustSwitch"].tap()  // now all of these are enabled, so other switch is disabled
+        
+        XCTAssertEqual(app.switches["ECUSwitch"].isEnabled, false)
+        
+        app.switches["TiresSwitch"].tap()
+        app.switches["ExhaustSwitch"].tap()   // funds are now 500
+        
+        //assert
+        XCTAssertEqual(app.switches["ECUSwitch"].isEnabled, true)
+        
+    }
+    
+//    func testRemaingFundsResetsOnDisplayWhenNewCarIsChosen() {
+//        let app = XCUIApplication()
+//        app.launch()
+//        //act
+//        app.switches["NitroSwitch"].tap()
+//        XCTAssertEqual(app.staticTexts[""].label, "Remaining Funds: 500")
+//        app.buttons["NextCar"].tap()
+//
+//    }
 
 }

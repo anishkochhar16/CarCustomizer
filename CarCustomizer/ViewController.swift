@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var currentPositions = 0
+    var timeRemaining = 30
     var remainingFunds = 0 {
         didSet {
             RemainingFunds.text = "Remaining Funds: \(remainingFunds)"
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var TiresPackage: UISwitch!
     @IBOutlet weak var CarStatistics: UILabel!
     @IBOutlet weak var RemainingFunds: UILabel!
+    @IBOutlet weak var RemaingTimeDisplay: UILabel!
     
     var starterCars = StarterCars()
     
@@ -33,21 +35,20 @@ class ViewController: UIViewController {
         }
     }
     
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         car = starterCars.cars[currentPositions]
         remainingFunds = 1000
-
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countdown), userInfo: nil, repeats: true)
+        RemaingTimeDisplay.text = "30"
     }
     
     
     @IBAction func NextCar(_ sender: Any) {
         
-        EngineExhaustPackage.isOn = false
-        TiresPackage.isOn = false
-        ECUPackage.isOn = false
-        NitroPackage.isOn = false
+        resetAllButtons()
         remainingFunds = 1000
         
         currentPositions += 1
@@ -104,6 +105,10 @@ class ViewController: UIViewController {
     }
     
     func validFunds ()  {
+        if remainingFunds == 250 {
+            TiresPackage.isEnabled = true
+            EngineExhaustPackage.isEnabled = true
+        }
         if remainingFunds < 250 {    // i.e. none are buyable
             if ECUPackage.isOn == false {
                 ECUPackage.isEnabled = false
@@ -117,7 +122,7 @@ class ViewController: UIViewController {
             if NitroPackage.isOn == false {
                 NitroPackage.isEnabled = false
             }
-        } else if remainingFunds < 500 {    // only engine package and tires package are buyable
+        }  else if remainingFunds < 500 {    // only engine package and tires package are buyable
             if NitroPackage.isOn == false {
                 NitroPackage.isEnabled = false
             }
@@ -130,6 +135,46 @@ class ViewController: UIViewController {
             ECUPackage.isEnabled = true
             TiresPackage.isEnabled = true
         }
+    }
+    
+    @objc func countdown() {
+        if timeRemaining > 0 {
+            timeRemaining -= 1
+            RemaingTimeDisplay.text = "\(timeRemaining)"
+        } else {
+            timer?.invalidate()
+            NitroPackage.isEnabled = false
+            EngineExhaustPackage.isEnabled = false
+            ECUPackage.isEnabled = false
+            TiresPackage.isEnabled = false
+            
+            let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopUpView") as! PopUpViewController
+            popOverVC.car = car
+            popOverVC.remainingFunds = remainingFunds
+            self.addChild(popOverVC)
+            popOverVC.view.frame = self.view.frame
+            self.view.addSubview(popOverVC.view)
+            popOverVC.didMove(toParent: self)
+            
+        }
+    }
+    @IBAction func Reset(_ sender: Any) {
+        car = starterCars.cars[currentPositions]
+        timeRemaining = 30
+        resetAllButtons()
+        remainingFunds = 1000
+        self.view.setNeedsDisplay()
+    }
+    
+    func resetAllButtons() {
+        EngineExhaustPackage.isOn = false
+        TiresPackage.isOn = false
+        ECUPackage.isOn = false
+        NitroPackage.isOn = false
+        NitroPackage.isEnabled = true
+        EngineExhaustPackage.isEnabled = true
+        ECUPackage.isEnabled = true
+        TiresPackage.isEnabled = true
     }
     
 

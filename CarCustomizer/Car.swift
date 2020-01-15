@@ -26,4 +26,14 @@ struct Car {
         Handling: ............... \(handling)
         """
     }
+    
+    func summaryStats() -> String {
+        return """
+        Your final statistics:
+        Car : \(make) \(model)
+        Top Speed: \(topSpeed) mph
+        Acceleration (0-60): \(acceleration)s
+        Handling: \(handling)
+        """
+    }
 }

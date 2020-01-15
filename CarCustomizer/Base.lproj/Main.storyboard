@@ -35,7 +35,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAG-AD-jBv">
                                 <rect key="frame" x="20" y="310" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next Car"/>
+                                <accessibility key="accessibilityConfiguration" identifier="NextCar"/>
+                                <state key="normal" title="Next Car">
+                                    <color key="titleColor" red="0.72559099739999999" green="0.13092156360000001" blue="0.021178001669999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="NextCar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PzR-7e-Y78"/>
                                 </connections>
@@ -43,6 +46,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="652-Nd-voe">
                                 <rect key="frame" x="325" y="389" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ExhaustSwitch"/>
                                 <connections>
                                     <action selector="EngineExhaustPackageToggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="2AW-C5-KTo"/>
                                 </connections>
@@ -50,6 +54,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="d4T-qB-ktO">
                                 <rect key="frame" x="325" y="462" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="TiresSwitch"/>
                                 <connections>
                                     <action selector="TiresPackageToggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="b6o-9S-MTE"/>
                                 </connections>
@@ -71,6 +76,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remaining Funds" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMM-0T-05c">
                                 <rect key="frame" x="20" y="689" width="374" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="RemaingFunds"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -92,6 +98,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zn2-MZ-PXJ">
                                 <rect key="frame" x="325" y="541" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="NitroSwitch"/>
                                 <connections>
                                     <action selector="NitroPackageToggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="DHL-Fs-zNP"/>
                                 </connections>
@@ -99,12 +106,30 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zWC-vS-FVk">
                                 <rect key="frame" x="325" y="625" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ECUSwitch"/>
                                 <connections>
                                     <action selector="ECUPackageToggle:" destination="BYZ-38-t0r" eventType="valueChanged" id="alX-Lb-vZ3"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Remaining" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXG-dE-yOJ">
+                                <rect key="frame" x="272" y="57" width="122" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.72559099740932642" green="0.13092156362712706" blue="0.021178001668263283" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ss-pY-srZ">
+                                <rect key="frame" x="329" y="310" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="0.72559099739999999" green="0.13092156360000001" blue="0.021178001669999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="Reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bpM-21-BiB"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
@@ -112,6 +137,7 @@
                         <outlet property="ECUPackage" destination="zWC-vS-FVk" id="J4f-R1-hgc"/>
                         <outlet property="EngineExhaustPackage" destination="652-Nd-voe" id="lCn-QI-fdj"/>
                         <outlet property="NitroPackage" destination="Zn2-MZ-PXJ" id="aiG-dy-js3"/>
+                        <outlet property="RemaingTimeDisplay" destination="PXG-dE-yOJ" id="raU-B6-MJM"/>
                         <outlet property="RemainingFunds" destination="OMM-0T-05c" id="VQm-w8-fc5"/>
                         <outlet property="TiresPackage" destination="d4T-qB-ktO" id="Hpb-cm-feM"/>
                     </connections>
@@ -119,6 +145,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="132.58928571428572"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="kwR-Fx-AHN">
+            <objects>
+                <viewController storyboardIdentifier="PopUpView" id="WK0-Pp-OIq" customClass="PopUpViewController" customModule="CarCustomizer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Elt-a5-j1Z">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TqJ-YD-vwe">
+                                <rect key="frame" x="0.0" y="359" width="414" height="537"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h00-ge-lvD">
+                                        <rect key="frame" x="113" y="384" width="188" height="111"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" red="0.081893428337092067" green="0.65240832599368348" blue="0.90788941062176165" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="CloseWindow:" destination="WK0-Pp-OIq" eventType="touchUpInside" id="ugn-hy-Syl"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeH-N0-jp7">
+                                        <rect key="frame" x="33" y="22" width="373" height="248"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Summary">
+                                                <attributes>
+                                                    <color key="NSBackgroundColor" red="0.62546957998349462" green="0.63290176287354316" blue="0.66058128238341962" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="20" name="Rockwell-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="N0M-Sg-vth"/>
+                    </view>
+                    <connections>
+                        <outlet property="SummaryLabel" destination="xeH-N0-jp7" id="qEe-6a-cd5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CWH-0W-O4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="795.6521739130435" y="132.58928571428572"/>
         </scene>
     </scenes>
 </document>
