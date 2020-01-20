@@ -19,8 +19,7 @@ class PopUpViewController: UIViewController {
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
         SummaryLabel.text = (car?.summaryStats())! + "\n\nRemaining funds: \(remainingFunds)"
-        
-        showAnimate()
+        showAnimate()  // begins animation
     }
     
     @IBAction func CloseWindow(_ sender: Any) {
@@ -29,7 +28,7 @@ class PopUpViewController: UIViewController {
     }
     
     func showAnimate() {
-        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3) // gets larger than normal, and then shrinks
         self.view.alpha = 0.0
         UIView.animate(withDuration: 0.25, animations: {
             self.view.alpha = 1.0
